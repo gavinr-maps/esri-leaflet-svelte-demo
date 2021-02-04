@@ -17,6 +17,9 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "esri-leaflet": "^3.0.0",
+    "leaflet": "^1.7.1",
     "sirv-cli": "^1.0.0"
   }
 }
