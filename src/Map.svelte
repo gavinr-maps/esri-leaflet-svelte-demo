@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import { Map as LeafletMap, Icon, Marker } from "leaflet";
   import { FeatureLayer } from "esri-leaflet";
   import { vectorBasemapLayer } from "esri-leaflet-vector";
@@ -8,7 +9,9 @@
   import icon from "leaflet/dist/images/marker-icon.png";
   import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
-  const map = (domNode) => {
+  let mapNode;
+
+  onMount(() => {
     // The default icon does not work due to webpack issues
     let DefaultIcon = new Icon({
       iconUrl: icon,
@@ -18,8 +21,7 @@
     });
     Marker.prototype.options.icon = DefaultIcon;
 
-    const map = new LeafletMap(domNode);
-    map.setView([53.35014, -6.266155], 8);
+    const map = new LeafletMap(mapNode).setView([53.35014, -6.266155], 8);
 
     vectorBasemapLayer("ArcGIS:Streets", {
       apiKey: "< YOUR VALID API KEY HERE >", // https://developers.arcgis.com
@@ -36,10 +38,10 @@
         layer.feature.properties.CITY_NAME
       }</strong><br /> Population: ${layer.feature.properties.POP.toLocaleString("en")}</p>`;
     });
-  };
+  });
 </script>
 
-<div use:map />
+<div bind:this={mapNode} />
 
 <style>
   div {
