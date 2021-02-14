@@ -39,11 +39,4 @@
   };
 </script>
 
-<div use:map />
-
-<style>
-  div {
-    height: 100%;
-    width: 100%;
-  }
-</style>
+<div class="leafletMap" use:map />
