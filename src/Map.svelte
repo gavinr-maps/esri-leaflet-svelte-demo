@@ -9,7 +9,6 @@
   import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
   const map = (domNode) => {
-    // The default icon does not work due to webpack issues
     let DefaultIcon = new Icon({
       iconUrl: icon,
       shadowUrl: iconShadow,
