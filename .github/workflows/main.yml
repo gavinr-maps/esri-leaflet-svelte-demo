@@ -16,6 +16,15 @@ jobs:
           npm run build
         env:
           ARCGIS_API_KEY: ${{ secrets.ARCGIS_API_KEY }}
+      - name: Generate screeenshot (optional)
+        working-directory: public
+        continue-on-error: true
+        run: |
+          npm install --global pageres-cli
+          npm install --global serve
+          echo "{\"trailingSlash\":true}" > serve.json
+          serve . -p 5000 &
+          pageres http://localhost:5000/index.html 1024x768 --filename=screenshot --delay=10
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
