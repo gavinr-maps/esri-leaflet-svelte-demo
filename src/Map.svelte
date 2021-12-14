@@ -8,6 +8,10 @@
   import icon from "leaflet/dist/images/marker-icon.png";
   import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
+  // This all-caps variable gets replaced by @rollup/plugin-replace -
+  // see rollup.config.js.
+  const apiKey = ARCGIS_API_KEY;
+
   const map = (domNode) => {
     let DefaultIcon = new Icon({
       iconUrl: icon,
@@ -18,16 +22,15 @@
     Marker.prototype.options.icon = DefaultIcon;
 
     const map = new LeafletMap(domNode);
-    map.setView([53.35014, -6.266155], 8);
+    map.setView([25.773924, -80.196075], 6);
 
     vectorBasemapLayer("ArcGIS:Streets", {
-      apiKey: "< YOUR VALID API KEY HERE >", // https://developers.arcgis.com
+      apiKey, // https://developers.arcgis.com
     }).addTo(map);
 
     // Add a Feature Layer
     const fl = new FeatureLayer({
-      url:
-        "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer/0",
+      url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer/0",
     }).addTo(map);
 
     fl.bindPopup(function (layer) {
