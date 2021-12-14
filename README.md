@@ -4,7 +4,7 @@
 
 A simple demo using [Esri Leaflet](https://esri.github.io/esri-leaflet/) within a [Svelte](https://svelte.dev/) App. 
 
-[![screenshot](screenshot.png)](https://esri-leaflet-svelte-demo.gavinr.com)
+[![screenshot](https://esri-leaflet-svelte-demo.gavinr.com/screenshot.png)](https://esri-leaflet-svelte-demo.gavinr.com)
 
 ## Getting Started
 
