@@ -8,9 +8,9 @@
   import icon from "leaflet/dist/images/marker-icon.png";
   import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
-  // This all-caps variable gets replaced by @rollup/plugin-replace -
-  // see rollup.config.js.
-  const apiKey = ARCGIS_API_KEY;
+  // This variable gets replaced by vite -
+  // see https://vitejs.dev/guide/env-and-mode.html
+  const apiKey = import.meta.env.VITE_ARCGIS_API_KEY;
 
   const map = (domNode) => {
     let DefaultIcon = new Icon({

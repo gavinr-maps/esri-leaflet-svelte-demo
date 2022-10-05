@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v3
 
-      - name: Install and Build 🔧
+      - name: Install and Build
         run: |
           npm install
           npm run build
         env:
-          ARCGIS_API_KEY: ${{ secrets.ARCGIS_API_KEY }}
+          VITE_ARCGIS_API_KEY: ${{ secrets.ARCGIS_API_KEY }}
       - name: Generate screeenshot (optional)
         working-directory: public
         continue-on-error: true
@@ -26,7 +26,7 @@ jobs:
           serve . -p 5000 &
           pageres http://localhost:5000/index.html 1366x768 --filename=screenshot --delay=10
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: public
