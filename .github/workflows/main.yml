@@ -24,7 +24,7 @@ jobs:
           npm install --global serve
           echo "{\"trailingSlash\":true}" > serve.json
           serve . -p 5000 &
-          pageres http://localhost:5000/index.html 1366x768 --filename=screenshot --delay=10
+          pageres http://localhost:5000/index.html 1366x768 --filename=screenshot --delay=12
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
